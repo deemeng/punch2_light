@@ -1,10 +1,11 @@
-<h1 align="center">PUNCH_Linker</h1>
-<p align="center"><i>A Disordered Flexible Linker (DFL) ppredictor trained on DLD domain Linker dataset and <a href="https://disprot.org/">Disprot</a> Database.</i></p>
+<h1 align="center">PUNCH2</h1>
+<p align="center"><i>A residue-level Intrinsically Disordered Region/Protein(IDP/IDR) predictor trained on PDB and <a href="https://www.rcsb.org/">Disprot</a> Databases.</i></p>
 
 ## 📝 Description
-PUNCH_Linker project belongs to a serious of PUNCH projects which focus on the Structure and Function prediction of Intrisically Diordered Protein/Region (IDP/IDR).
-Currently we have <a href="https://disprot.org/">PUNCH2</a> for IDR structure prediction and <a href="https://disprot.org/">PUNCH_Linker</a> for DFL prediction.
-PUNCH_Linker is trained on more than 2000 DFL linker dataset from <a href="https://disprot.org/">DLD</a> dataset and <a href="https://disprot.org/">Disprot</a>, its performance is better than TOP predictors on the CAID2 Linker dataset.
+PUNCH2 project belongs to a serious of PUNCH projects which focus on the Structure and Function prediction of Intrisically Diordered Protein/Region (IDP/IDR).
+Currently we have <a href="https://github.com/deemeng/punch2">PUNCH2</a> for IDR structure prediction, and <a href="https://github.com/deemeng/punch_linker">PUNCH_Linker</a> and  <a href="https://github.com/deemeng/punch_linker_light">PUNCH_Linker</a> for DFL prediction.
+
+PUNCH2 is trained on more than 
 
 ## 🐣 Getting Started
 Currently, we provide two ways to use this perdictor: Docker or Download source code from this Github.
