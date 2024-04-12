@@ -3,14 +3,13 @@
 
 ## 📝 Description
 PUNCH2 project belongs to a serious of PUNCH projects which focus on the Structure and Function prediction of Intrisically Diordered Protein/Region (IDP/IDR).
-Currently we have <a href="https://github.com/deemeng/punch2">PUNCH2</a> for IDR structure prediction, and <a href="https://github.com/deemeng/punch_linker">PUNCH_Linker</a> and  <a href="https://github.com/deemeng/punch_linker_light">PUNCH_Linker</a> for DFL prediction.
-
-PUNCH2 is trained on more than 
+Currently we have <a href="https://github.com/deemeng/punch2">PUNCH2</a> for IDR structure prediction, and <a href="https://github.com/deemeng/punch_linker">PUNCH_Linker</a> and  <a href="https://github.com/deemeng/punch_linker_light">PUNCH_Linker_Light</a> for DFL prediction. 
 
 ## 🐣 Getting Started
 Currently, we provide two ways to use this perdictor: Docker or Download source code from this Github.
 ### Pre-requirements
-This predictor requires sequences embedded with [ProtTrans](https://github.com/agemagician/ProtTrans) and [MSA Transformer](https://github.com/facebookresearch/esm).
+This predictor requires sequences embedded with ONEHOT, [ProtTrans](https://github.com/agemagician/ProtTrans), and [MSA Transformer](https://github.com/facebookresearch/esm).
+
 Note, 
 * File format should be `[SEQUENCE_NAME/ID].npy`, replace *SEQUENCE_NAME/ID* with the actural sequence ID, it should be the same as the name from `.fasta` file.
 * Matrix shape: \
@@ -23,53 +22,59 @@ Note,
 (We maintain this separation due to the requirements from [CAID3](https://caid.idpcentral.org/challenge), but we may edit or merge them in the future.)
 ### Docker
 #### Dependencies
-* [ProtTrans](https://github.com/agemagician/ProtTrans) and [MSA Transformer](https://github.com/facebookresearch/esm) embedded sequences;
+* Onehot, [ProtTrans](https://github.com/agemagician/ProtTrans), and [MSA Transformer](https://github.com/facebookresearch/esm) embedded sequences;
 * Docker Desktop 4.27.2 or higher;
 #### Installing
-* Go to Dockerhub
-* Get the project
+* Pull the Docker image from  <a href="https://hub.docker.com/repository/docker/dimeng851/punch2/tags">DockerHub</a>
   ```sh
-  
-  ``` 
-### Executing program
+  docker pull dimeng851/punch2:v1
+  ```
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+#### Executing program
+* RUN the following command:
+  >Replace \
+  >`CONTAINER_NAME` - anyname you like; \
+  >`PATH_TO_INPUT_FASTA` - path to input file, which is **ONE** FASTA file including all query sequences; \
+  >`PATH_TO_ONEHOT` - a folder which includes all ONEHOT embedded sequences; \
+  >`PATH_TO_MSATRANS` - a folder which includes all MSA Transformer embedded sequences; \
+  >`PATH_TO_PROTTRANS` - a folder which includes all protTrans embedded sequences; \
+  >`PATH_OUTPUT` - a folder which will be used to save all outputs, including: a. timings.csv; b. disorder folder, where will keep all the prediction resulds.
+  ```sh
+  docker run -d \
+  -it \
+  --name [CONTAINER_NAME] \
+  --mount type=bind,source=[PATH_TO_INPUT_FASTA],target=/punch2/data/input.fasta \
+  --mount type=bind,source=[PATH_TO_ONEHOT],target=/punch2/data/onehot \
+  --mount type=bind,source=[PATH_TO_MSATRANS],target=/punch2/data/msaTrans \
+  --mount type=bind,source=[PATH_TO_PROTTRANS],target=/punch2/data/protTrans \
+  --mount type=bind,source=[PATH_OUTPUT],target=/punch2/output \
+  dimeng851/punch2:v1
+  ```
+  > 
+  >An example:
+  ```sh
+  docker run -d \
+  -it \
+  --name punch2_con \
+  --mount type=bind,source=/home/dimeng/caid3/test_idr.fasta,target=/punch2/data/input.fasta \
+  --mount type=bind,source=/home/dimeng/project/idr/data/caid/features/onehot,target=/punch2/data/onehot \
+  --mount type=bind,source=/home/dimeng/project/idr/data/caid/features/msaTrans,target=/punch2/data/msaTrans \
+  --mount type=bind,source=/home/dimeng/project/idr/data/caid/features/protTrans,target=/punch2/data/protTrans \
+  --mount type=bind,source=/home/dimeng/caid3/punch_idr_output,target=/punch2/output \
+  dimeng851/punch2:v1
+  ```
+* Find the results in **OUTPUT** folder.
 
-## Help
+## Contact & Help 📩
 
-Any advise for common problems or issues.
+Email Di.
 ```
-command to run if program contains helper info
+di.meng@ucdconnect.ie
 ```
 
 ## Authors
+📬 Di Meng - di.meng@ucdconnect.ie \
+📬 Gianluca Pollastri - gianluca.pollastri@ucd.ie
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+## Project
+>https://github.com/deemeng/punch2
