@@ -11,12 +11,10 @@ an example:
 ---------------------
 path_input = '/home/dimeng/caid3/test_idr.fasta'
 path_onehot = '/home/dimeng/project/idr/data/caid/features/onehot'
-path_msaTrans = '/home/dimeng/project/idr/data/caid/features/msaTrans'
 path_protTrans = '/home/dimeng/project/idr/data/caid/features/protTrans'
 '''
 path_input = ''
 path_onehot = ''
-path_msaTrans = ''
 path_protTrans = ''
 '''
 2.Output folder

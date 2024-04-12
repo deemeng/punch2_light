@@ -10,13 +10,11 @@ path_data = 'data'
 if u.user:
     path_input = u.path_input
     path_onehot = u.path_onehot
-    path_msaTrans = u.path_msaTrans
     path_protTrans = u.path_protTrans
     path_output = u.path_output
 else:
     path_input = os.path.join(path_data, 'input.fasta')
     path_onehot = os.path.join(path_data, 'onehot')
-    path_msaTrans = os.path.join(path_data, 'msaTrans')
     path_protTrans = os.path.join(path_data, 'protTrans')
     path_output = 'output' # output folder
 

@@ -51,9 +51,8 @@ if __name__ == "__main__":
     list_modelInfo_onehot = [{'model_name':f'{paramH.netNames[0][6:]}_{paramH.datasetTypes[0]}.pth_f{k}', 'net_name': paramH.netNames[0], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[1]}  for k in range(1, 4)]
     list_modelInfo_protTrans_1 = [{'model_name':f'{paramH.netNames[1][6:]}_{paramH.datasetTypes[0]}.pth_f{k}', 'net_name': paramH.netNames[1], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[2]}  for k in range(1, 6)]
     list_modelInfo_protTrans_2 = [{'model_name':f'{paramH.netNames[0][6:]}_{paramH.datasetTypes[0]}.pth_f{k}', 'net_name': paramH.netNames[0], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[2]}  for k in range(1, 6)]
-    list_modelInfo_msaTrans = [{'model_name':f'{paramH.netNames[2][6:]}_{paramH.datasetTypes[1]}.pth_f{k}', 'net_name': paramH.netNames[2], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[3]}  for k in range(1, 6)]
-
-    list_modelInfo = list_modelInfo_onehot + list_modelInfo_protTrans_1 + list_modelInfo_protTrans_2 + list_modelInfo_msaTrans
+    
+    list_modelInfo = list_modelInfo_onehot + list_modelInfo_protTrans_1 + list_modelInfo_protTrans_2
     models = generate_models(list_modelInfo)
 
     '''
@@ -69,11 +68,8 @@ if __name__ == "__main__":
         entity_id = entity['id']
         entity_seq = entity['sequence']
         entity_length = len(entity_seq)
-        msaTrans = True
-        if entity_length>1022:
-            msaTrans = False
         # get prediction
-        avg_pred = ensemble_predict(models, list_modelInfo, entity_id, paramF.path_onehot, paramF.path_msaTrans, paramF.path_protTrans, msaTrans)
+        avg_pred = ensemble_predict(models, list_modelInfo, entity_id, paramF.path_onehot, paramF.path_protTrans)
         pred_label = get_pred_label(avg_pred, threshold=paramH.label_threshold)
         predInfo = {'id': entity_id, 'sequence': entity_seq, 'pred': avg_pred.tolist(), 'label': pred_label}
         

@@ -60,7 +60,7 @@ def generate_models(list_modelInfo: list):
     return models
     
 # Prediction
-def get_true_pred(model, entity_id, feature_type, path_onehot, path_msaTrans, path_protTrans):
+def get_true_pred(model, entity_id, feature_type, path_onehot, path_protTrans):
     '''
     Given the embeded file path, generate predictions.
     params:
@@ -73,8 +73,6 @@ def get_true_pred(model, entity_id, feature_type, path_onehot, path_msaTrans, pa
         path_f = os.path.join(path_onehot, '{}.npy'.format(entity_id))
     elif feature_type=='protTrans':
         path_f = os.path.join(path_protTrans, '{}.npy'.format(entity_id))
-    elif feature_type=='msa_transformer':
-        path_f = os.path.join(path_msaTrans, '{}.npy'.format(entity_id))
     if os.path.isfile(path_f):
         seq_embedded = read_plm(path_f)
     else: 
@@ -86,7 +84,7 @@ def get_true_pred(model, entity_id, feature_type, path_onehot, path_msaTrans, pa
     return pred
     
 # Define a function to perform ensemble prediction
-def ensemble_predict(models, list_modelInfo, entity_id, path_onehot, path_msaTrans, path_protTrans, msaTrans=True):
+def ensemble_predict(models, list_modelInfo, entity_id, path_onehot, path_protTrans):
     '''
     Given the input data, and a list of model, generate the predictions from all of the models, average the predictions as the final output.
 
@@ -94,15 +92,12 @@ def ensemble_predict(models, list_modelInfo, entity_id, path_onehot, path_msaTra
         models - list of models in evaluation mode.
         list_modelInfo - list of dictionaries. [{}, {}, ...]
         entity_id - 
-        msaTrans - use msaTrans-based predictor or not. False if the length(seq)>1022
     '''
     predictions = []
     with torch.no_grad():
         for model, model_info in zip(models, list_modelInfo):
             feature_type = model_info['featureType']
-            if feature_type=='msa_transformer' and (msaTrans is False):
-                continue
-            pred = get_true_pred(model, entity_id, feature_type, path_onehot, path_msaTrans, path_protTrans)
+            pred = get_true_pred(model, entity_id, feature_type, path_onehot, path_protTrans)
             
             # embedded sequence not exist.
             if pred is None:

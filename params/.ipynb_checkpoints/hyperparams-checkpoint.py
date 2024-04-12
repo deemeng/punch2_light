@@ -14,4 +14,4 @@ padding = True
 lr = 0.0001
 dropout = 0
 
-label_threshold = 0.39
+label_threshold = 0.35
