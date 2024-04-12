@@ -1,0 +1,18 @@
+biopython==1.81
+importlib-metadata==6.8.0
+importlib-resources==6.1.1
+numpy==1.26.0
+pandas==2.1.3
+scikit-learn==1.3.2
+tqdm==4.66.1
+transformers==4.37.2
+argparse==1.4.0
+
+# pytorch
+mpmath==1.3.0
+networkx==3.2.1
+pillow==10.2.0
+sympy==1.12
+torch==2.2.1
+torchaudio==2.2.1
+torchvision==0.17.1

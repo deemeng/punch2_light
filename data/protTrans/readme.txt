@@ -1,0 +1,2 @@
+ProtTrans embedded sequences.
+
