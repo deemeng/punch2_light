@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install -r requirements.txt
 
 # Copy the source code into the container.
-WORKDIR /punch2
-COPY . /punch2/.
+WORKDIR /punch2_light
+COPY . /punch2_light/.
 
-CMD python /punch2/main.py
+CMD python /punch2_light/main.py
