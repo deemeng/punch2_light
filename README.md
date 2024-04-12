@@ -5,6 +5,7 @@
 PUNCH2_Light project belongs to a serious of PUNCH projects which focus on the Structure and Function prediction of Intrisically Diordered Protein/Region (IDP/IDR).
 Currently we have <a href="https://github.com/deemeng/punch2">PUNCH2</a> and <a href="https://github.com/deemeng/punch2_light">PUNCH2_Light</a> for IDR structure prediction, and <a href="https://github.com/deemeng/punch_linker">PUNCH_Linker</a> and  <a href="https://github.com/deemeng/punch_linker_light">PUNCH_Linker_Light</a> for DFL prediction. 
 
+PUNCH2_Light, which is similar to PUNCH_Linker_Light, does not need any Multiple Sequence Alignment (MSA) searching 
 ## 🐣 Getting Started
 ### Pre-requirements
 This predictor requires sequences embedded with ONEHOT, and [ProtTrans](https://github.com/agemagician/ProtTrans).
@@ -25,7 +26,7 @@ Note,
 #### Installing
 * Pull the Docker image from  <a href="https://hub.docker.com/repository/docker/dimeng851/punch2_light/tags">DockerHub</a>
   ```sh
-  docker pull dimeng851/punch2:v1
+  docker pull dimeng851/punch2_light:v1
   ```
 
 #### Executing program
