@@ -109,9 +109,6 @@ def ensemble_predict(models, list_modelInfo, entity_id, path_onehot, path_msaTra
                 continue
                 
             predictions.append(pred)
-
-        print(entity_id)
-        print([len(p) for p in predictions])
         # Average the predictions (you can use other strategies like weighted averaging)
         ensemble_prediction = torch.tensor(predictions).mean(dim=0)
     return ensemble_prediction
