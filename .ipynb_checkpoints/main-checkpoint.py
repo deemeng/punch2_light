@@ -48,10 +48,10 @@ if __name__ == "__main__":
     print('Using device:', device)
 
     # Load models
-    list_modelInfo_onehot = [{'model_name':f'{paramH.netNames[0][6:]}_{paramH.datasetType}.pth_f{k}', 'net_name': paramH.netNames[0], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[1]}  for k in range(1, 4)]
-    list_modelInfo_protTrans_1 = [{'model_name':f'{paramH.netNames[1][6:]}_{paramH.datasetType}.pth_f{k}', 'net_name': paramH.netNames[1], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[2]}  for k in range(1, 6)]
-    list_modelInfo_protTrans_2 = [{'model_name':f'{paramH.netNames[0][6:]}_{paramH.datasetType}.pth_f{k}', 'net_name': paramH.netNames[0], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[2]}  for k in range(1, 6)]
-    list_modelInfo_msaTrans = [{'model_name':f'{paramH.netNames[0][6:]}_{paramH.datasetType}.pth_f{k}', 'net_name': paramH.netNames[0], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[3]}  for k in range(1, 6)]
+    list_modelInfo_onehot = [{'model_name':f'{paramH.netNames[0][6:]}_{paramH.datasetTypes[0]}.pth_f{k}', 'net_name': paramH.netNames[0], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[1]}  for k in range(1, 4)]
+    list_modelInfo_protTrans_1 = [{'model_name':f'{paramH.netNames[1][6:]}_{paramH.datasetTypes[0]}.pth_f{k}', 'net_name': paramH.netNames[1], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[2]}  for k in range(1, 6)]
+    list_modelInfo_protTrans_2 = [{'model_name':f'{paramH.netNames[0][6:]}_{paramH.datasetTypes[0]}.pth_f{k}', 'net_name': paramH.netNames[0], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[2]}  for k in range(1, 6)]
+    list_modelInfo_msaTrans = [{'model_name':f'{paramH.netNames[2][6:]}_{paramH.datasetTypes[1]}.pth_f{k}', 'net_name': paramH.netNames[2], 'lr':paramH.lr, 'dropout':paramH.dropout, 'featureType': paramH.dict_featureType[3]}  for k in range(1, 6)]
 
     list_modelInfo = list_modelInfo_onehot + list_modelInfo_protTrans_1 + list_modelInfo_protTrans_2 + list_modelInfo_msaTrans
     models = generate_models(list_modelInfo)
